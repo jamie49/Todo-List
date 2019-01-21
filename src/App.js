@@ -11,9 +11,8 @@ class App extends Component {
     constructor(props) {
         super(props);
 
-        console.log(DB_CONFIG);
         this.app = firebase.initializeApp(DB_CONFIG);
-        this.database  = this.app.database().ref().child('notes');
+        this.database = this.app.database().ref().child('notes');
 
         this.state = {
             notes: []

@@ -22,7 +22,7 @@ class App extends Component {
     componentWillMount(){
         const previousNotes = this.state.notes;
 
-        // DataSnapshot
+        // Firebase callback - INSERT
         this.database.on('child_added', snap => {
             previousNotes.push({
                 id: snap.key,
@@ -34,6 +34,7 @@ class App extends Component {
             })
         })
 
+        // Firebase callback - DELETE
         this.database.on('child_removed', snap => {
             for(var i=0; i < previousNotes.length; i++){
                 if(previousNotes[i].id === snap.key){
@@ -51,6 +52,10 @@ class App extends Component {
         this.database.push().set({ noteContent: note });
     }
 
+    updateNote = (noteId, newNoteContent) => {
+        this.database.child(noteId).update({ noteContent: newNoteContent });
+    }
+
     removeNote = (noteId) => {
         this.database.child(noteId).remove();
     }
@@ -59,13 +64,13 @@ class App extends Component {
         return (
             <div className="notesWrapper">
                 <div className="notesHeader">
-                    <div className="heading">React & Firebase To-Do List</div>
+                    <div className="heading">React &amp; Firebase To-Do List</div>
                 </div>
                 <div className="notesBody">
                     {
                         this.state.notes.map((note) => {
                             return (
-                                <Note noteContent={note.noteContent} noteId={note.id} key={note.id} removeNote={this.removeNote} />
+                                <Note noteContent={note.noteContent} noteId={note.id} key={note.id} updateNote={this.updateNote} removeNote={this.removeNote} />
                             )
                         })
                     }

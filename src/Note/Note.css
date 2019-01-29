@@ -1,5 +1,6 @@
 .note {
-    padding:10px 10px 38px 34px;
+    display: flex;
+    padding: 15px;
     height: auto; 
     margin: auto;
     margin-bottom: 8px;
@@ -11,33 +12,83 @@
     border-radius: 3px;
     box-shadow: 43x 3px 2px #333;
     opacity: 1;
-  }
+}
   
-  @keyframes fadeIn { from { opacity:0; } to { opacity:0.8; } }
-  @keyframes fadeOut { from { opactiy:0.8; } to { opacity:0; } }
+@keyframes fadeIn { from { opacity:0; } to { opacity:0.8; } }
+@keyframes fadeOut { from { opactiy:0.8; } to { opacity:0; } }
   
-  .fade-in {
-      opacity:0;
-      animation:fadeIn ease-in 1;
-      animation-fill-mode:forwards;
-      animation-duration: 0.1s;
-  }
-  
-  .noteContent{
-    float:left;
-    padding-right: 70px;
-    padding-bottom: 10px;
+.fade-in {
+    opacity:0;
+    animation:fadeIn ease-in 1;
+    animation-fill-mode:forwards;
+    animation-duration: 0.1s;
+}
+
+input.noteContent {
+    width: calc(100% - 50px);
+    font-size: 16px;
+    margin-right: 50px;
+    padding: 10px;
     display: block;
-  }
-  
-  .closeButton {
-      color: #AA9;
-      font-weight: bold;
-      float: right;
-      cursor: pointer;
-      font-size: 1.3em;
-  }
-  
-  .closeButton:hover {
-      color: #AC2500;
-  }
+    background-color: transparent;
+    box-shadow: none;
+    border: none;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+}
+
+.buttonContainer {
+    width: 50px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: -8px;
+}
+
+.saveButton {
+    opacity: 0;
+    display: inline-block;
+    width: 16px;
+    height: 16px;
+    background-image: url(Images/checkmark.svg);
+    background-size: 16px 16px;
+    background-position: center center;
+    background-repeat: no-repeat;
+    pointer-events: none;
+    cursor: pointer;
+    background-color: transparent;
+    box-shadow: none;
+    border: none;
+    transition: ease opacity 0.3s;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+}
+
+.saveButton.show {
+    opacity: 0.3;
+    pointer-events: auto;
+}
+
+.saveButton:hover {
+    opacity: 0.75;
+}
+
+.closeButton {
+    color: #AA9;
+    font-weight: bold;
+    float: right;
+    cursor: pointer;
+    font-size: 1.3em;
+    transition: ease color 0.3s;
+    -webkit-appearance: none;
+    appearance: none;
+    background-color: transparent;
+    box-shadow: none;
+    border: none;
+}
+
+.closeButton:hover {
+    color: #AC2500;
+}

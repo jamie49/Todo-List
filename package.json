@@ -8,6 +8,7 @@
     "react-dom": "^16.7.0",
     "react-scripts": "2.1.3"
   },
+  "homepage": "http://jamieanderson.ca/git/todo-list/",
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
